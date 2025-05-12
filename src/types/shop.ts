@@ -15,3 +15,21 @@ export interface CartState {
   items: CartItem[];
   isOpen: boolean;
 }
+
+export interface CustomerInfo {
+  fullName: string;
+  email: string;
+  address: string;
+  city: string;
+  zipCode: string;
+  country: string;
+}
+
+export interface Order {
+  customerInfo: CustomerInfo;
+  notes?: string;
+  items: CartItem[];
+  totalAmount: number;
+  orderId: string;
+  orderDate?: string;
+}

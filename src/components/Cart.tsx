@@ -2,8 +2,9 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { useCart } from "../context/CartContext";
-import { ShoppingCart, Plus, Minus, Trash2 } from "lucide-react";
+import { ShoppingCart, Plus, Minus, Trash2, ArrowRight } from "lucide-react";
 import { formatCurrency } from "../lib/utils";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const {
@@ -15,6 +16,13 @@ export default function Cart() {
     totalItems,
     totalPrice,
   } = useCart();
+  
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    closeCart();
+    navigate("/checkout");
+  };
 
   return (
     <>
@@ -120,10 +128,22 @@ export default function Cart() {
               <div className="flex justify-between mb-4">
                 <span>Subtotal</span>
                 <span className="font-semibold">
-                  ${totalPrice.toFixed(2)}
+                  {formatCurrency(totalPrice)}
                 </span>
               </div>
-              <Button className="w-full">Checkout</Button>
+              <Button 
+                className="w-full mb-2" 
+                onClick={handleCheckout}
+              >
+                Checkout <ArrowRight size={16} className="ml-2" />
+              </Button>
+              <Button 
+                variant="outline" 
+                className="w-full" 
+                onClick={closeCart}
+              >
+                Continue Shopping
+              </Button>
             </div>
           )}
         </div>
