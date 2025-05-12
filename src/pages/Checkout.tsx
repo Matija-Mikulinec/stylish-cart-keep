@@ -2,7 +2,8 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import Header from "../components/Header";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import CheckoutForm from "../components/CheckoutForm";
 import { formatCurrency } from "../lib/utils";
 
@@ -19,7 +20,7 @@ const Checkout = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+      <Navbar />
       <main className="flex-grow container mx-auto px-4 py-8">
         <h1 className="text-2xl font-semibold mb-6">Checkout</h1>
         
@@ -54,6 +55,7 @@ const Checkout = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };
